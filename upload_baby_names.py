@@ -19,9 +19,9 @@ if __name__ == "__main__":
         "Content-Type": "application/json"
     }
     for line in file_contents:
+        counter += 1
         if len(line.strip().split(" ")) != 1:
             continue
-        counter += 1
         baby_name = line.strip()
         print(f'{counter} / {len(file_contents)} - Uploading baby name "{baby_name}"')
         body = {
