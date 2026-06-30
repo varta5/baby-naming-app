@@ -21,6 +21,10 @@ public class BabyNameServiceImpl implements BabyNameService {
         return babyNameRepository.findAll();
     }
 
+    public BabyName findById(Long id) throws Exception {
+        return babyNameRepository.findById(id).orElseThrow(() -> new Exception("Name not found"));
+    }
+
     public BabyName save(BabyName babyName) {
         return babyNameRepository.save(babyName);
     }

@@ -8,6 +8,8 @@ public interface BabyNameService {
 
     List<BabyName> findAll();
 
+    BabyName findById(Long id) throws Exception;
+
     BabyName save(BabyName babyName);
 
 }
