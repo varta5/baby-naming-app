@@ -22,9 +22,16 @@ function App() {
     }
   ]);
 
+  const [displayedBabyName, setDisplayedBabyName] = useState(babyNames[1]);
+
+  function loadRandomBabyName() {
+    setDisplayedBabyName(babyNames[Math.floor(babyNames.length * Math.random())]);
+  }
+
   return (
     <>
-      <h1>{babyNames[0].name}</h1>
+      <button onClick={loadRandomBabyName}>Get random baby name!</button>
+      <h1>{displayedBabyName.name}</h1>
     </>
   )
 
