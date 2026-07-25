@@ -30,8 +30,9 @@ function App() {
 
   return (
     <>
+      <h1>Would you like this name for your baby?</h1>
       {loadingBabyNames ? "Loading..." : <LoadRandomBabyNameButton />}
-      <h1>{displayedBabyName?.name}</h1>
+      <h2>{displayedBabyName?.name}</h2>
     </>
   )
 
