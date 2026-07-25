@@ -2,7 +2,9 @@
 
 A web application to help choose the name for your child to be born
 
-Backend is a Java Spring Boot application.
+## Backend
+
+Backend is a Java Spring Boot application with Maven build tool.
 
 To run the backend, invoke below command from the `backend` directory:
 
@@ -11,6 +13,16 @@ mvn spring-boot:run
 ```
 
 The database consists of one table: "names" containing possible names
+
+## Frontend
+
+Frontend is a React application.
+
+To run the frontend, invoke below command from the `frontend` directory:
+
+```sh
+npm run dev
+```
 
 ## Mass uploading baby names
 
