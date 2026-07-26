@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
+import VoteButtons from './components/VoteButtons';
 
 function App() {
 
   const [babyNames, setBabyNames] = useState([]);
-
   const [displayedBabyName, setDisplayedBabyName] = useState(null);
   const [loadingBabyNames, setLoadingBabyNames] = useState(false);
 
@@ -19,7 +19,7 @@ function App() {
 
   async function loadBabyNames() {
     setLoadingBabyNames(true);
-    const response = await axios.get("http://localhost:8080/api/v1/names");
+    const response = await axios.get('http://localhost:8080/api/v1/names');
     setBabyNames(response.data);
     setLoadingBabyNames(false);
   }
@@ -35,6 +35,7 @@ function App() {
       <button onClick={loadBabyNames}>Refresh possible names</button>
       {loadingBabyNames ? "Loading..." : <LoadRandomBabyNameButton />}
       <h2>{displayedBabyName?.name}</h2>
+      <VoteButtons babyNameId={displayedBabyName?.id}/>
     </>
   )
 
