@@ -38,6 +38,10 @@ function App() {
     loadBabyNames();
   }, []);
 
+  useEffect(() => {
+    loadRandomBabyName();
+  }, [babyNames]);
+
   return (
     <div class="app">
       <h1>Would you like this name for your baby?</h1>
