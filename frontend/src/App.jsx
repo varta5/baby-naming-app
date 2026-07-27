@@ -9,6 +9,16 @@ function App() {
   const [displayedBabyName, setDisplayedBabyName] = useState(null);
   const [loadingBabyNames, setLoadingBabyNames] = useState(false);
 
+  function loadNewRandomBabyName() {
+    removeBabyNameFromList();
+    loadRandomBabyName();
+  }
+
+  function removeBabyNameFromList() {
+    const index = babyNames.indexOf(displayedBabyName);
+    babyNames.splice(index, 1);
+  }
+
   function loadRandomBabyName() {
     setDisplayedBabyName(babyNames[Math.floor(babyNames.length * Math.random())]);
   }
@@ -35,7 +45,7 @@ function App() {
       <button onClick={loadBabyNames}>Refresh possible names</button>
       {loadingBabyNames ? "Loading..." : <LoadRandomBabyNameButton />}
       <h2>{displayedBabyName?.name}</h2>
-      <VoteButtons babyNameId={displayedBabyName?.id} postVoteAction={loadRandomBabyName}/>
+      <VoteButtons babyNameId={displayedBabyName?.id} postVoteAction={loadNewRandomBabyName}/>
     </div>
   )
 
