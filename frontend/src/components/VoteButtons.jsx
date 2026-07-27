@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function VoteButtons({ babyNameId }) {
+function VoteButtons({ babyNameId, postVoteAction }) {
 
   const choices = [
     {
@@ -15,6 +15,11 @@ function VoteButtons({ babyNameId }) {
     }
   ]
 
+  async function handleVote(babyNameId, choice) {
+    await castVote(babyNameId, choice);
+    postVoteAction();
+  }
+
   async function castVote(babyNameId, choice) {
     const body = {
       name_id: babyNameId,
@@ -26,7 +31,7 @@ function VoteButtons({ babyNameId }) {
   return (
     <>
       {choices.map((choice) => (
-        <span class="vote-button" onClick={() => castVote(babyNameId, choice.choice)}>{choice.buttonText}</span>
+        <span class="vote-button" onClick={() => handleVote(babyNameId, choice.choice)}>{choice.buttonText}</span>
       ))}
     </>
   );

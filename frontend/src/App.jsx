@@ -35,7 +35,7 @@ function App() {
       <button onClick={loadBabyNames}>Refresh possible names</button>
       {loadingBabyNames ? "Loading..." : <LoadRandomBabyNameButton />}
       <h2>{displayedBabyName?.name}</h2>
-      <VoteButtons babyNameId={displayedBabyName?.id}/>
+      <VoteButtons babyNameId={displayedBabyName?.id} postVoteAction={loadRandomBabyName}/>
     </div>
   )
 
