@@ -1,0 +1,15 @@
+.app {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.vote-button {
+  margin: 0 20px;
+  padding: 0 5px;
+  font-size: 36px;
+}
+
+.vote-button:hover {
+  cursor: pointer;
+}

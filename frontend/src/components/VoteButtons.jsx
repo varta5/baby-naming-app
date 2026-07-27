@@ -8,7 +8,7 @@ function VoteButtons({ babyNameId }) {
       buttonText: '👎'
     }, {
       choice: 'MAYBE',
-      buttonText: '?'
+      buttonText: '🤷‍♂️'
     }, {
       choice: 'YES',
       buttonText: '👍'
@@ -26,7 +26,7 @@ function VoteButtons({ babyNameId }) {
   return (
     <>
       {choices.map((choice) => (
-        <button onClick={() => castVote(babyNameId, choice.choice)}>{choice.buttonText}</button>
+        <span class="vote-button" onClick={() => castVote(babyNameId, choice.choice)}>{choice.buttonText}</span>
       ))}
     </>
   );
