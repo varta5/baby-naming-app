@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './styles/App.css';
 import VoteButtons from './components/VoteButtons';
+import { getBabyNames } from './services/api';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
   }
 
   async function loadBabyNames() {
-    const response = await axios.get('http://localhost:8080/api/v1/names');
+    const response = await getBabyNames();
     setBabyNames(response.data);
   }
 
@@ -41,7 +41,7 @@ function App() {
       <h2>Number of names you could choose from: {babyNames.length}</h2>
       <button onClick={loadBabyNames}>Refresh possible names</button>
       <h2>{displayedBabyName?.name}</h2>
-      <VoteButtons babyNameId={displayedBabyName?.id} postVoteAction={loadNewRandomBabyName}/>
+      <VoteButtons babyNameId={displayedBabyName?.id} actionAfterVote={loadNewRandomBabyName}/>
     </div>
   )
 

@@ -1,6 +1,6 @@
-import axios from 'axios';
+import { postVote } from './../services/api';
 
-function VoteButtons({ babyNameId, postVoteAction }) {
+function VoteButtons({ babyNameId, actionAfterVote }) {
 
   const choices = [
     {
@@ -16,16 +16,8 @@ function VoteButtons({ babyNameId, postVoteAction }) {
   ]
 
   async function handleVote(babyNameId, choice) {
-    await castVote(babyNameId, choice);
-    postVoteAction();
-  }
-
-  async function castVote(babyNameId, choice) {
-    const body = {
-      name_id: babyNameId,
-      choice: choice
-    }
-    const response = await axios.post('http://localhost:8080/api/v1/votes', body);
+    await postVote(babyNameId, choice);
+    actionAfterVote();
   }
 
   return (
