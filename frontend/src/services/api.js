@@ -20,3 +20,8 @@ export async function postVote(babyNameId, choice) {
   const response = await api.post('/v1/votes', body);
   return response;
 }
+
+export async function getUsers() {
+  const response = await api.get('/v1/users');
+  return response;
+}

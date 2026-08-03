@@ -35,7 +35,7 @@ function Voting() {
   }, [babyNames]);
 
   return (
-    <div class="app">
+    <div>
       <h1>Would you like this name for your baby?</h1>
       <h2>Number of names you could choose from: {babyNames.length}</h2>
       <button onClick={loadBabyNames}>Refresh possible names</button>
