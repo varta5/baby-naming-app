@@ -1,0 +1,19 @@
+.modal {
+  margin: auto;
+  min-height: 50px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #ecf;
+  align-items: center;
+}
+
+.close-modal {
+  margin: -15px;
+  border: none;
+  padding: 0;
+  position: relative;
+  float: right;
+  font-size: x-large;
+  cursor: pointer;
+}

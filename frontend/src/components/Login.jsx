@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUsers } from './../services/api';
+import Modal from './Modal';
 
 function Login({ currentUser, setCurrentUser }) {
 
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+  const [isOpenCreateUserModal, setIsOpenCreateUserModal] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -13,6 +15,10 @@ function Login({ currentUser, setCurrentUser }) {
       setUsers(response.data);
     })();
   }, []);
+
+  function openCreateUserModal() {
+    setIsOpenCreateUserModal(true);
+  }
 
   return (
     <>
@@ -31,6 +37,12 @@ function Login({ currentUser, setCurrentUser }) {
           <option value={user.id}>{user.name}</option>
         ))}
       </select>
+      <div>
+        <button onClick={openCreateUserModal}>Create new user</button>
+      </div>
+      <Modal isOpen={isOpenCreateUserModal} onClose={() => setIsOpenCreateUserModal(false)}>
+        Contents of the modal. To be injected.
+      </Modal>
     </>
   );
 }
