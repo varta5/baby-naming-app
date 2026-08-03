@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import VoteButtons from './VoteButtons';
 import { getBabyNames } from './../services/api';
 
-function Voting() {
+function Voting({ currentUser, setCurrentUser }) {
 
   const [babyNames, setBabyNames] = useState([]);
   const [displayedBabyName, setDisplayedBabyName] = useState(null);
@@ -26,6 +26,10 @@ function Voting() {
     setBabyNames(response.data);
   }
 
+  function logOut() {
+    setCurrentUser(null);
+  }
+
   useEffect(() => {
     loadBabyNames();
   }, []);
@@ -36,6 +40,7 @@ function Voting() {
 
   return (
     <div>
+      <h3>Current user: {currentUser.name} - <button onClick={logOut}>Log out</button></h3>
       <h1>Would you like this name for your baby?</h1>
       <h2>Number of names you could choose from: {babyNames.length}</h2>
       <button onClick={loadBabyNames}>Refresh possible names</button>
