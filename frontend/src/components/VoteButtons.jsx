@@ -1,4 +1,4 @@
-import { postVote } from './../services/api';
+import { createVote } from './../services/api';
 
 function VoteButtons({ babyNameId, actionAfterVote }) {
 
@@ -16,7 +16,7 @@ function VoteButtons({ babyNameId, actionAfterVote }) {
   ]
 
   async function handleVote(babyNameId, choice) {
-    await postVote(babyNameId, choice);
+    await createVote(babyNameId, choice);
     actionAfterVote();
   }
 

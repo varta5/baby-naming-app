@@ -20,7 +20,7 @@ export async function getBabyNames() {
   return response;
 }
 
-export async function postVote(babyNameId, choice) {
+export async function createVote(babyNameId, choice) {
   const body = {
     name_id: babyNameId,
     choice: choice
