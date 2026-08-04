@@ -7,6 +7,14 @@ const api = axios.create({
   },
 });
 
+export async function createUser(userName) {
+  const body = {
+    name: userName
+  }
+  const response = await api.post('/v1/users', body);
+  return response;
+}
+
 export async function getBabyNames() {
   const response = await api.get('/v1/names');
   return response;

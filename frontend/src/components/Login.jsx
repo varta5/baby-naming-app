@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUsers } from './../services/api';
+import CreateUser from './CreateUser';
 import Modal from './Modal';
 
 function Login({ currentUser, setCurrentUser }) {
@@ -41,7 +42,7 @@ function Login({ currentUser, setCurrentUser }) {
         <button onClick={openCreateUserModal}>Create new user</button>
       </div>
       <Modal isOpen={isOpenCreateUserModal} onClose={() => setIsOpenCreateUserModal(false)}>
-        Contents of the modal. To be injected.
+        <CreateUser setCurrentUser={setCurrentUser}/>
       </Modal>
     </>
   );
