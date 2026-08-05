@@ -13,6 +13,7 @@ import java.util.Date;
 
 import com.baby_naming_app.backend.enums.Choice;
 import com.baby_naming_app.backend.models.BabyName;
+import com.baby_naming_app.backend.models.User;
 
 @Entity
 @Table(name = "votes")
@@ -23,6 +24,10 @@ public class Vote {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "baby_name_id", nullable = false)
     private BabyName babyName;
 
@@ -30,6 +35,10 @@ public class Vote {
     private Choice choice;
 
     private Date timestamp;
+
+    public User getUser() {
+        return this.user;
+    }
 
     public BabyName getBabyName() {
         return this.babyName;
@@ -41,6 +50,10 @@ public class Vote {
 
     public Date getTimestamp() {
         return this.timestamp;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setBabyName(BabyName babyName) {

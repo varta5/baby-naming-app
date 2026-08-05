@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.baby_naming_app.backend.dtos.VoteDto;
 import com.baby_naming_app.backend.models.BabyName;
+import com.baby_naming_app.backend.models.User;
 import com.baby_naming_app.backend.models.Vote;
 import com.baby_naming_app.backend.repositories.VoteRepository;
 
@@ -27,13 +28,14 @@ public class VoteServiceImpl implements VoteService {
         return voteRepository.findAll();
     }
 
-    public Vote save(VoteDto voteDto, BabyName babyName) {
-        Vote vote = convertToVote(voteDto, babyName);
+    public Vote save(VoteDto voteDto, User user, BabyName babyName) {
+        Vote vote = convertToVote(voteDto, user, babyName);
         return voteRepository.save(vote);
     }
 
-    private Vote convertToVote(VoteDto voteDto, BabyName babyName) {
+    private Vote convertToVote(VoteDto voteDto, User user, BabyName babyName) {
         Vote vote = this.modelMapper.map(voteDto, Vote.class);
+        vote.setUser(user);
         vote.setBabyName(babyName);
         vote.setTimestamp(new Date());
         return vote;

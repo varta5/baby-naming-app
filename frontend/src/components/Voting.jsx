@@ -45,7 +45,7 @@ function Voting({ currentUser, setCurrentUser }) {
       <h2>Number of names you could choose from: {babyNames.length}</h2>
       <button onClick={loadBabyNames}>Refresh possible names</button>
       <h2>{displayedBabyName?.name}</h2>
-      <VoteButtons babyNameId={displayedBabyName?.id} actionAfterVote={loadNewRandomBabyName}/>
+      <VoteButtons babyNameId={displayedBabyName?.id} actionAfterVote={loadNewRandomBabyName} currentUser={currentUser} />
     </div>
   )
 

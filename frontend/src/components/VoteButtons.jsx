@@ -1,6 +1,6 @@
 import { createVote } from './../services/api';
 
-function VoteButtons({ babyNameId, actionAfterVote }) {
+function VoteButtons({ babyNameId, actionAfterVote, currentUser }) {
 
   const choices = [
     {
@@ -16,7 +16,7 @@ function VoteButtons({ babyNameId, actionAfterVote }) {
   ]
 
   async function handleVote(babyNameId, choice) {
-    await createVote(babyNameId, choice);
+    await createVote(babyNameId, choice, currentUser.id);
     actionAfterVote();
   }
 
